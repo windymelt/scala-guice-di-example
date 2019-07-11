@@ -8,7 +8,8 @@ ThisBuild / organizationName := "example"
 lazy val root = (project in file("."))
   .settings(
     name := "scala-guice-di-example",
-    libraryDependencies += scalaTest % Test
+    libraryDependencies += scalaTest % Test,
+    libraryDependencies += "com.google.inject" % "guice" % "4.0"
   )
 
 // Uncomment the following for publishing to Sonatype.

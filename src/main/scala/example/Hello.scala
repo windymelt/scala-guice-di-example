@@ -1,9 +1,22 @@
 package example
 
-object Hello extends Greeting with App {
-  println(greeting)
+import javax.inject._
+import com.google.inject.AbstractModule
+
+object Hello extends App {
+  new HelloClass(new EnglishGreeting()).sayHello()
+}
+
+class HelloClass @Inject() (val greeter: Greeting) {
+  def sayHello() {
+    println(greeter.greeting)
+  }
 }
 
 trait Greeting {
-  lazy val greeting: String = "hello"
+  val greeting: String;
+}
+
+class EnglishGreeting extends Greeting {
+  val greeting: String = "Hello!"
 }
